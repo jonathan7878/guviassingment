@@ -1,0 +1,42 @@
+import json
+class School:
+     name = "Sam"
+     dept = "IT"
+     m1 = 20
+     m2 = 30
+     m3 = 80
+     m4 = 75
+     m5 = 90
+     x={'name':name,'dept':dept}
+
+     def total(self):
+          a=self.m1+self.m2+self.m3+self.m4+self.m5
+          self.x['total']=a
+          print(a)
+
+     def avg(self):
+          sum= (self.m1+self.m2+self.m3+self.m4+self.m5)
+          average = (sum/5)
+          print(average)
+          self.x['average']=average
+          return average
+     def grade(self):
+          a = self.avg()
+          if a > 90:
+              b="A"
+          else:
+               b="F"
+          print(b)
+          self.x['grade']=b
+
+Answer = School()
+Answer.total()
+Answer.avg()
+Answer.grade()
+print(School.x)
+with open('test.json', 'w') as fp:
+    json.dump(School.x, fp)
+
+read = open('test.json')
+data = json.load(read)
+print(data)
